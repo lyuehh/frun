@@ -1,6 +1,6 @@
 {
   "name": "frun",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/frun.js",
   "description": "run command when file changes",
   "homepage": "http://github.com/lyuehh/frun",
