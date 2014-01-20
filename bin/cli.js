@@ -3,15 +3,15 @@
 var program = require('commander');
 program
   .version('0.0.2')
-  .option('-f, --file [pattern]', 'files to watch')
-  .option('-c, --command [command]', 'commands to run when file changes')
+  .option('-f, --file [pattern]', 'files to watch, like "*.js;*.css"')
+  .option('-c, --command [commands]', 'commands to run when file changes')
   .parse(process.argv);
 
 var exec = require('child_process').exec;
 var gaze = require('gaze');
 
 if (program.file && program.command) {
-    gaze(program.file, function(err, watcher) {
+    gaze(program.file.split(';'), function(err, watcher) {
         if (err) {
             throw err;
         }
@@ -24,6 +24,6 @@ if (program.file && program.command) {
     });
 
 } else {
-    console.log('usage: frun -f "test.js" -c "node test.js"');
+    console.log('usage: frun -f "*.js;*.css" -c "node test.js"');
     process.exit(0);
 }
